@@ -34,7 +34,7 @@ public class ProductService {
 			return ResponseEntity.ok(prod);
 		}
 		
-		return ResponseEntity.badRequest().body(null);
+		return ResponseEntity.badRequest().body(prod);
 	}
 	
 	public Optional<Product> findById(long id){

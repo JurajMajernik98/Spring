@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.data.jpa.service.*;
@@ -14,7 +14,6 @@ import java.util.Optional;
 import com.data.jpa.domain.*;
 
 @RestController
-@RequestMapping("/customers")
 public class CustomerController {
 	private CustomerService cusService;
 	
@@ -23,17 +22,22 @@ public class CustomerController {
 		this.cusService = cusService;
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/user/{id}")
 	public Optional<Customer> getCustomer(@PathVariable(name = "id") Long id){
 		return cusService.findCustomerWithProducts(id);
 	}
 	
-	@PostMapping
+	@PostMapping("/store/register")
 	public ResponseEntity<String> createCustomer(@RequestBody Customer customer){
 		String message = "new Customer added: " + customer.getName();
 		
 		cusService.saveCustomer(customer);
 		return ResponseEntity.ok(message);
 	}
-
+	
+//	@GetMapping("/store/login")
+//	public ResponseEntity<String> login(){
+//		
+//		return ResponseEntity.ok("logged in");
+//	}
 }

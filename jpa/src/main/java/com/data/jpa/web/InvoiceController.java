@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.data.jpa.service.InvoiceService;
@@ -17,7 +17,6 @@ import com.data.jpa.domain.Invoice;
 import java.util.List;
 
 @RestController
-@RequestMapping("/invoice")
 public class InvoiceController {
 
 	private InvoiceService invService;
@@ -27,12 +26,12 @@ public class InvoiceController {
 		this.invService = invService;
 	}
 	
-	@GetMapping("/invoices")
+	@GetMapping("/user/invoices")
 	public List<Invoice> showInvoices(){
 		return this.invService.getInvoices();
 	}
 	
-	@PostMapping
+	@PostMapping("/user/invoice")
 	public ResponseEntity<String> createNew(@RequestBody @Valid Invoice invoice){
 		return this.invService.saveInvoice(invoice);
 	}

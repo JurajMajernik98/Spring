@@ -17,6 +17,8 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
+	private String username;
+	private String password;
 	
 //	mapovanie na atribut vo foreign classe (Product)
 	@OneToMany(mappedBy = "customer")
@@ -43,6 +45,22 @@ public class Customer {
 	
 	public long getId() {
 		return this.id;
+	}
+	
+	public String getUsername() {
+		return this.username;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getPassword() {
+		return this.password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	public List<Product> getProducts(){
