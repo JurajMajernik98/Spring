@@ -48,4 +48,11 @@ public class ProductService {
 	public List<Product> findProductMinPrice(double amount){
 		return this.repository.findExpensiveProducts(amount);
 	}
+	
+//	public void addToCustomer(long id) {
+//		Optional<Product> search = repository.findById(id);
+//		Product wantedProduct = search.get();
+//		
+//		wantedProduct.setCustomer(cusService.returnCustomer());
+//	}
 }
